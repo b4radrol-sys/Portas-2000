@@ -17,3 +17,14 @@ void bekerauto()
 
 bekerauto();
 
+/*
+// auto -> True; False
+
+
+void belepes()
+{
+    Console.WriteLine("Üdvözöljük!"){
+
+    }
+}
+*/
