@@ -1,0 +1,58 @@
+
+void bekerauto()
+{
+    Console.Write("Márka: ");
+    string marka = Console.ReadLine();
+
+    Console.Write("Tipus: ");
+    string tipus = Console.ReadLine();
+
+    Console.Write("Rendszáma: ");
+    string rendszam = Console.ReadLine();
+
+    Console.Write("Szín: ");
+    string szin = (Console.ReadLine());
+
+
+    List<string> autolista = new()  {marka + ", " + tipus + ", " + rendszam + ", " +  szin};
+    File.AppendAllLines("autoadatok.txt", autolista);
+}
+
+bekerauto();
+
+
+void bekerember()
+{
+    Console.Write("Név: ");
+    string nev = Console.ReadLine();
+
+    Console.Write("Neme: ");
+    string nem = (Console.ReadLine());
+
+    Console.Write("Kor: ");
+    int kor = int.Parse(Console.ReadLine());
+
+    Console.Write("Hajszín / Kopasz: ");
+    string hajszin = Console.ReadLine();
+
+    Console.Write("Igazolványszám: ");
+    int igazolvanyszam = int.Parse(Console.ReadLine());
+
+
+    List<string> emberadatok = new() { nev + ", " + nem + ", " + kor + ", " + hajszin + ", " + igazolvanyszam};
+    File.AppendAllLines("emberadatok.txt", emberadatok);
+}
+
+bekerember();
+
+/*
+// auto -> True; False
+
+
+void belepes()
+{
+    Console.WriteLine("Üdvözöljük!"){
+
+    }
+}
+*/
