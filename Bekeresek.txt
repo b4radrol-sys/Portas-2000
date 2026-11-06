@@ -14,13 +14,13 @@ void bekerauto()
     string szin = (Console.ReadLine());
 
 
-    List<string> autolista = new()  {marka + ", " + tipus + ", " + rendszam + ", " +  szin};
+    List<string> autolista = new() { marka + ", " + tipus + ", " + rendszam + ", " + szin };
     File.AppendAllLines("autoadatok.txt", autolista);
 }
 
 bekerauto();
 
-
+Console.WriteLine("-----------------");
 void bekerember()
 {
     Console.Write("Név: ");
@@ -39,7 +39,7 @@ void bekerember()
     int igazolvanyszam = int.Parse(Console.ReadLine());
 
 
-    List<string> emberadatok = new() { nev + ", " + nem + ", " + kor + ", " + hajszin + ", " + igazolvanyszam};
+    List<string> emberadatok = new() { nev + ", " + nem + ", " + kor + ", " + hajszin + ", " + igazolvanyszam };
     File.AppendAllLines("emberadatok.txt", emberadatok);
 }
 
