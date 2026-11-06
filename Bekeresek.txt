@@ -1,3 +1,64 @@
+Console.WriteLine("-----------------");
+Console.WriteLine("Jelentkezzen be (Felhasználónév, Jelszó)");
+Console.Write("kérem a felhasználónevet: ");
+string username = Console.ReadLine();
+
+Console.Write("kérem a jelszót: ");
+string jelszo = Console.ReadLine();
+
+
+if (File.Exists("bejelentkezes.txt"))
+{
+
+    foreach (string sor in File.ReadLines("bejelentkezes.txt").Skip(1))
+    {
+        string[] reszek = sor.Split("/");
+        Console.WriteLine(reszek[0]); // username 
+        Console.WriteLine(reszek[1]); // pw
+        Console.WriteLine(reszek[2]); // admin
+        if (reszek[0] == username)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                int proba = 0;
+                if (reszek[1] == jelszo)
+                {
+                    Console.WriteLine("Üdvözöljük!");
+                    break;
+                }
+                else
+                {
+                    proba += 1;
+                    Console.WriteLine($"Helytelen jelszó, próbálja újra{3 - proba}próbálkozás maradt!");
+                    Console.Write("kérem a jelszót újra: ");
+                    jelszo = Console.ReadLine();
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+//Txt fileba írás
+Console.WriteLine("-----------------");
+string autofejlec = "Márka, Tipus, Rendszám, Szín \n";
+
+if (!File.Exists("autoadatok.txt"))
+{
+    File.WriteAllText("autoadatok.txt", autofejlec);
+}
+
+string emberfejlec = "Név, Neme, Kor, Hajszín, Igazolványszám \n";
+if (!File.Exists("emberadatok.txt"))
+{
+    File.WriteAllText("emberadatok.txt", emberfejlec);
+}
 
 void bekerauto()
 {
@@ -14,8 +75,9 @@ void bekerauto()
     string szin = (Console.ReadLine());
 
 
-    List<string> autolista = new() { marka + ", " + tipus + ", " + rendszam + ", " + szin };
+    List<string> autolista = new() { marka + "," + tipus + "," + rendszam + "," + szin };
     File.AppendAllLines("autoadatok.txt", autolista);
+    Console.WriteLine("---Sikeresen hozzáadva---");
 }
 
 bekerauto();
@@ -39,20 +101,11 @@ void bekerember()
     int igazolvanyszam = int.Parse(Console.ReadLine());
 
 
-    List<string> emberadatok = new() { nev + ", " + nem + ", " + kor + ", " + hajszin + ", " + igazolvanyszam };
+    List<string> emberadatok = new() { nev + "," + nem + "," + kor + "," + hajszin + "," + igazolvanyszam };
     File.AppendAllLines("emberadatok.txt", emberadatok);
+    Console.WriteLine("---Sikeresen hozzáadva---");
 }
+Console.WriteLine("-----------------");
 
 bekerember();
-
-/*
-// auto -> True; False
-
-
-void belepes()
-{
-    Console.WriteLine("Üdvözöljük!"){
-
-    }
-}
-*/
+//Txt fileba írás
