@@ -2,13 +2,15 @@
 
 //----------------------------------------------------------------------------
 //Innen Roland jön
-string autofejlec = "ID, Márka, Tipus, Rendszám, Szín \n";
+Directory.CreateDirectory("../Fileok");
+
+string autofejlec = "Felvitel ideje, Márka, Tipus, Rendszám, Szín \n";
 if (!File.Exists("../Fileok/autoadatok.txt"))
 {
     File.WriteAllText("../Fileok/autoadatok.txt", autofejlec);
 }
 
-string emberfejlec = "ID, Név, Neme, Kor, Hajszín, Igazolványszám \n";
+string emberfejlec = "Felvitel ideje, Név, Neme, Kor, Hajszín, Igazolványszám \n";
 if (!File.Exists("../Fileok/emberadatok.txt"))
 {
     File.WriteAllText("../Fileok/emberadatok.txt", emberfejlec);
@@ -76,7 +78,7 @@ void bekerauto()
 
 
 
-    List<string> autolista = new() { mostani.ToString("yyyy-MM-dd_hh:mm:ss") + "," + marka + "," + tipus + "," + rendszam + "," + szin };
+    List<string> autolista = new() { mostani.ToString("yyyy-MM-dd_HH:mm:ss") + "," + marka + "," + tipus + "," + rendszam + "," + szin };
     File.AppendAllLines("../Fileok/autoadatok.txt", autolista);
     Console.WriteLine("---Sikeresen hozzáadva---");
     Console.WriteLine("-----------------");
@@ -150,7 +152,7 @@ void bekerember()
 
 
 
-    List<string> emberadatok = new() { mostani.ToString("yyyy-MM-dd_hh:mm:ss") + "," + nev + "," + nem + "," + kor + "," + hajszin + "," + igazolvanyszam };
+    List<string> emberadatok = new() { mostani.ToString("yyyy-MM-dd_hh:HH:ss") + "," + nev + "," + nem + "," + kor + "," + hajszin + "," + igazolvanyszam };
     File.AppendAllLines("../Fileok/emberadatok.txt", emberadatok);
     Console.WriteLine("---Sikeresen hozzáadva---");
     Console.WriteLine("-----------------");
@@ -251,11 +253,11 @@ if (File.Exists("bejelentkezes.txt"))
                             {
                                 beker();
                             }
-                            if (muvelet == 2)
+                            else if (muvelet == 2)
                             {
                                 //keres();
                             }
-                            if (muvelet == 3)
+                            else if (muvelet == 3)
                             {
                                 hozzaad();
                             }
@@ -275,7 +277,7 @@ if (File.Exists("bejelentkezes.txt"))
                             {
                                 beker();
                             }
-                            if (muvelet == 2)
+                            else if (muvelet == 2)
                             {
                                 //keres();
                             }
