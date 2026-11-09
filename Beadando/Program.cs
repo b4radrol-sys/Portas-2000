@@ -1,7 +1,4 @@
-﻿using System.Data;
-using System.Runtime.CompilerServices;
-
-string previlagehozza = "";
+﻿string previlagehozza = "";
 
 //----------------------------------------------------------------------------
 //Innen Roland jön
@@ -21,7 +18,7 @@ string bejelentkezesfej = "Username/Password/Privileges\n" + "sysadmin/Menojelsz
 if (!File.Exists("bejelentkezes.txt"))
 {
     File.WriteAllText("bejelentkezes.txt", bejelentkezesfej);
-    File.SetAttributes("bejelentkezes.txt",FileAttributes.Hidden);
+    File.SetAttributes("bejelentkezes.txt", FileAttributes.Hidden);
 }
 
 
@@ -29,7 +26,8 @@ void bekerauto()
 {
     Console.WriteLine("-----------------");
 
-    int sorszam = File.ReadAllLines("../Fileok/autoadatok.txt").Length;
+
+    DateTime mostani = DateTime.Now;
 
     Console.Write("Márka: ");
     string marka = Console.ReadLine();
@@ -78,7 +76,7 @@ void bekerauto()
 
 
 
-    List<string> autolista = new() { sorszam + "," + marka + "," + tipus + "," + rendszam + "," + szin };
+    List<string> autolista = new() { mostani.ToString("yyyy-MM-dd_hh:mm:ss") + "," + marka + "," + tipus + "," + rendszam + "," + szin };
     File.AppendAllLines("../Fileok/autoadatok.txt", autolista);
     Console.WriteLine("---Sikeresen hozzáadva---");
     Console.WriteLine("-----------------");
@@ -90,7 +88,7 @@ void bekerember()
 {
     Console.WriteLine("-----------------");
 
-    int sorszam = File.ReadAllLines("../Fileok/emberadatok.txt").Length;
+    DateTime mostani = DateTime.Now;
 
     Console.Write("Név: ");
     string nev = Console.ReadLine();
@@ -143,41 +141,44 @@ void bekerember()
     Console.Write("Igazolványszám: ");
     string igazolvanyszam = (Console.ReadLine());
 
-    while (hajszin.Any(char.IsDigit) || string.IsNullOrWhiteSpace(hajszin))
+    while (string.IsNullOrWhiteSpace(igazolvanyszam))
     {
         Console.WriteLine("---Helytelen megadás---");
-        Console.Write("Hajszín: ");
-        hajszin = Console.ReadLine();
+        Console.Write("Igazolványszám: ");
+        igazolvanyszam = Console.ReadLine();
     }
 
 
 
-    List<string> emberadatok = new() { sorszam + "," + nev + "," + nem + "," + kor + "," + hajszin + "," + igazolvanyszam };
+    List<string> emberadatok = new() { mostani.ToString("yyyy-MM-dd_hh:mm:ss") + "," + nev + "," + nem + "," + kor + "," + hajszin + "," + igazolvanyszam };
     File.AppendAllLines("../Fileok/emberadatok.txt", emberadatok);
     Console.WriteLine("---Sikeresen hozzáadva---");
     Console.WriteLine("-----------------");
 }
 
-//Vége a mesének
+//Vége a dalnak
 //----------------------------------------------------------------------------
 
 void beker()
 {
     Console.Write("Ember vagy Autó érkezett(1. ember 2.autó)? ");
     byte bekerki = 0;
+    while (bekerki != 1 && bekerki != 2)
+    {
 
-    bekerki = byte.Parse(Console.ReadLine());
-    if (bekerki == 1)
-    {
-        bekerember();
-    }
-    else if (bekerki == 2)
-    {
-        bekerauto();
-    }
-    else
-    {
-        Console.WriteLine("Nem jót adott meg");
+        bekerki = byte.Parse(Console.ReadLine());
+        if (bekerki == 1)
+        {
+            bekerember();
+        }
+        else if (bekerki == 2)
+        {
+            bekerauto();
+        }
+        else
+        {
+            Console.WriteLine("Nem jót adott meg");
+        }
     }
 }
 
@@ -258,6 +259,10 @@ if (File.Exists("bejelentkezes.txt"))
                             {
                                 hozzaad();
                             }
+                            else
+                            {
+                                Console.WriteLine("Nincs ilyen lehetőség, írja be újra!");
+                            }
                         }
                     }
                     else
@@ -273,6 +278,10 @@ if (File.Exists("bejelentkezes.txt"))
                             if (muvelet == 2)
                             {
                                 //keres();
+                            }
+                            else
+                            {
+                                Console.WriteLine("Nincs ilyen lehetőség, írja be újra!");
                             }
                         }
                     }

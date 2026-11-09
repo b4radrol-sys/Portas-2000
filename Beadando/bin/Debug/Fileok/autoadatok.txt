@@ -1,1 +1,0 @@
-ID, Márka, Tipus, Rendszám, Szín 
