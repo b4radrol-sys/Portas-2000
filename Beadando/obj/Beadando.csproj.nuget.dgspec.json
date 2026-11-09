@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\b4radrol\\Desktop\\Projekt_1\\Beadando\\Beadando.csproj": {}
+    "J:\\2026_2027\\Git\\Projekt_1\\Beadando\\Beadando.csproj": {}
   },
   "projects": {
-    "C:\\Users\\b4radrol\\Desktop\\Projekt_1\\Beadando\\Beadando.csproj": {
+    "J:\\2026_2027\\Git\\Projekt_1\\Beadando\\Beadando.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\b4radrol\\Desktop\\Projekt_1\\Beadando\\Beadando.csproj",
+        "projectUniqueName": "J:\\2026_2027\\Git\\Projekt_1\\Beadando\\Beadando.csproj",
         "projectName": "Beadando",
-        "projectPath": "C:\\Users\\b4radrol\\Desktop\\Projekt_1\\Beadando\\Beadando.csproj",
-        "packagesPath": "C:\\Users\\b4radrol\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\b4radrol\\Desktop\\Projekt_1\\Beadando\\obj\\",
+        "projectPath": "J:\\2026_2027\\Git\\Projekt_1\\Beadando\\Beadando.csproj",
+        "packagesPath": "C:\\Users\\b4tulcsa\\.nuget\\packages\\",
+        "outputPath": "J:\\2026_2027\\Git\\Projekt_1\\Beadando\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\b4radrol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\b4tulcsa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

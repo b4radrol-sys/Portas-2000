@@ -5,15 +5,15 @@ string previlagehozza = "";
 //----------------------------------------------------------------------------
 //Innen Roland jön
 string autofejlec = "ID, Márka, Tipus, Rendszám, Szín \n";
-if (!File.Exists("../../Fileok/autoadatok.txt"))
+if (!File.Exists("../Fileok/autoadatok.txt"))
 {
-    File.WriteAllText("../../Fileok/autoadatok.txt", autofejlec);
+    File.WriteAllText("../Fileok/autoadatok.txt", autofejlec);
 }
 
 string emberfejlec = "ID, Név, Neme, Kor, Hajszín, Igazolványszám \n";
-if (!File.Exists("../../Fileok/emberadatok.txt"))
+if (!File.Exists("../Fileok/emberadatok.txt"))
 {
-    File.WriteAllText("../../Fileok/emberadatok.txt", emberfejlec);
+    File.WriteAllText("../Fileok/emberadatok.txt", emberfejlec);
 }
 
 string bejelentkezesfej = "Username/Password/Privileges\n" + "sysadmin/Menojelszo21/Admin";
@@ -28,7 +28,7 @@ void bekerauto()
 {
     Console.WriteLine("-----------------");
 
-    int sorszam = File.ReadAllLines("../../Fileok/autoadatok.txt").Length;
+    int sorszam = File.ReadAllLines("../Fileok/autoadatok.txt").Length;
 
     Console.Write("Márka: ");
     string marka = Console.ReadLine();
@@ -78,7 +78,7 @@ void bekerauto()
 
 
     List<string> autolista = new() { sorszam + "," + marka + "," + tipus + "," + rendszam + "," + szin };
-    File.AppendAllLines("../../Fileok/autoadatok.txt", autolista);
+    File.AppendAllLines("../Fileok/autoadatok.txt", autolista);
     Console.WriteLine("---Sikeresen hozzáadva---");
     Console.WriteLine("-----------------");
 }
@@ -89,7 +89,7 @@ void bekerember()
 {
     Console.WriteLine("-----------------");
 
-    int sorszam = File.ReadAllLines("../../Fileok/emberadatok.txt").Length;
+    int sorszam = File.ReadAllLines("../Fileok/emberadatok.txt").Length;
 
     Console.Write("Név: ");
     string nev = Console.ReadLine();
@@ -152,7 +152,7 @@ void bekerember()
 
 
     List<string> emberadatok = new() { sorszam + "," + nev + "," + nem + "," + kor + "," + hajszin + "," + igazolvanyszam };
-    File.AppendAllLines("../../Fileok/emberadatok.txt", emberadatok);
+    File.AppendAllLines("../Fileok/emberadatok.txt", emberadatok);
     Console.WriteLine("---Sikeresen hozzáadva---");
     Console.WriteLine("-----------------");
 }
