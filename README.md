@@ -11,12 +11,12 @@ Egy C# alapú  alkalmazás, ami autó, szeméy és fiók kezelésére szolgál. 
   * Fiók erősség:
     * **Admin:** Adatbeírás, adatmódosítás.
     * **User:** Korlátozott adatbevitel.
-* **Autók adatainak kezelése:**
+* **Autók adatainak kezelése:** 🏎
   * Márka, típus, rendszám és szín bekérése.
   * Automatikus ID generálás.
   * Bemeneti adatok érvényesítése (típus- és karakterellenőrzés).
   * Adatok mentése CSV szerkezetű fájlba (`autoadatok.txt`).
-* **Személyek adatinak kezelése:**
+* **Személyek adatinak kezelése:** 👲🏾
   * Név, nem, kor, hajszín és igazolványszám mentése.
   * Bemeneti adatok érvényesítése (típus- és karakterellenőrzés).
   * Adatok mentése CSV szerkezetű fájlba (`emberadatok.txt`).
