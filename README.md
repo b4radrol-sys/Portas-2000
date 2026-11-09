@@ -44,4 +44,5 @@ Az alkalmazás az alábbi `.txt` fájlokban tárolja az adatokat:
 3. Indítsd el
 
 ### Adminoknak utasítás 😘
-1. Képes vagy módosítani, hozzáadni és szerkeszteni adatokat
+* Képes vagy módosítani, hozzáadni és szerkeszteni adatokat
+* 
