@@ -45,4 +45,3 @@ Az alkalmazás az alábbi `.txt` fájlokban tárolja az adatokat:
 
 ### Adminoknak utasítás 😘
 * Képes vagy módosítani, hozzáadni és szerkeszteni adatokat
-* 
