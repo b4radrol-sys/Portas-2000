@@ -1,69 +1,34 @@
-﻿using System.Buffers.Binary;
-using System.Net;
+﻿using System.Runtime.CompilerServices;
 
 string previlagehozza = "";
-
-
-Console.WriteLine("-----------------");
-
-if (File.Exists("bejelentkezes.txt"))
-{
-
-    foreach (string sor in File.ReadLines("bejelentkezes.txt").Skip(1))
-    {
-        string[] reszek = sor.Split("/");
-        Console.WriteLine(reszek[0]); // username 
-        Console.WriteLine(reszek[1]); // pw
-        Console.WriteLine(reszek[2]); // admin
-        if (reszek[0] == username)
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                int proba = 0;
-                if (reszek[1] == jelszo)
-                {
-                    Console.WriteLine("Üdvözöljük!");
-                    break;
-                }
-                else
-                {
-                    proba += 1;
-                    Console.WriteLine($"Helytelen jelszó, próbálja újra{3 - proba}próbálkozás maradt!");
-                    Console.Write("kérem a jelszót újra: ");
-                    jelszo = Console.ReadLine();
-                }
-            }
-        }
-    }
-}
-
-
-
-
-
-
 
 //----------------------------------------------------------------------------
 //Innen Roland jön
 string autofejlec = "ID, Márka, Tipus, Rendszám, Szín \n";
-if (!File.Exists("autoadatok.txt"))
+if (!File.Exists("../../Fileok/autoadatok.txt"))
 {
-    File.WriteAllText("autoadatok.txt", autofejlec);
+    File.WriteAllText("../../Fileok/autoadatok.txt", autofejlec);
 }
 
 string emberfejlec = "ID, Név, Neme, Kor, Hajszín, Igazolványszám \n";
-if (!File.Exists("emberadatok.txt"))
+if (!File.Exists("../../Fileok/emberadatok.txt"))
 {
-    File.WriteAllText("emberadatok.txt", emberfejlec);
+    File.WriteAllText("../../Fileok/emberadatok.txt", emberfejlec);
 }
 
+string bejelentkezesfej = "Username/Password/Privileges\n" + "sysadmin/Menojelszo21/Admin";
+if (!File.Exists("bejelentkezes.txt"))
+{
+    File.WriteAllText("bejelentkezes.txt", bejelentkezesfej);
+    File.SetAttributes("bejelentkezes.txt",FileAttributes.Hidden);
+}
 
 
 void bekerauto()
 {
     Console.WriteLine("-----------------");
 
-    int sorszam = File.ReadAllLines("autoadatok.txt").Length;
+    int sorszam = File.ReadAllLines("../../Fileok/autoadatok.txt").Length;
 
     Console.Write("Márka: ");
     string marka = Console.ReadLine();
@@ -113,7 +78,7 @@ void bekerauto()
 
 
     List<string> autolista = new() { sorszam + "," + marka + "," + tipus + "," + rendszam + "," + szin };
-    File.AppendAllLines("autoadatok.txt", autolista);
+    File.AppendAllLines("../../Fileok/autoadatok.txt", autolista);
     Console.WriteLine("---Sikeresen hozzáadva---");
     Console.WriteLine("-----------------");
 }
@@ -124,7 +89,7 @@ void bekerember()
 {
     Console.WriteLine("-----------------");
 
-    int sorszam = File.ReadAllLines("emberadatok.txt").Length;
+    int sorszam = File.ReadAllLines("../../Fileok/emberadatok.txt").Length;
 
     Console.Write("Név: ");
     string nev = Console.ReadLine();
@@ -187,16 +152,34 @@ void bekerember()
 
 
     List<string> emberadatok = new() { sorszam + "," + nev + "," + nem + "," + kor + "," + hajszin + "," + igazolvanyszam };
-    File.AppendAllLines("emberadatok.txt", emberadatok);
+    File.AppendAllLines("../../Fileok/emberadatok.txt", emberadatok);
     Console.WriteLine("---Sikeresen hozzáadva---");
     Console.WriteLine("-----------------");
 }
 
-
-bekerauto();
-bekerember();
 //Vége a mesének
 //----------------------------------------------------------------------------
+
+void beker()
+{
+    Console.Write("Ember vagy Autó érkezett(1. ember 2.autó)? ");
+    byte bekerki = 0;
+
+    bekerki = byte.Parse(Console.ReadLine());
+    if (bekerki == 1)
+    {
+        bekerember();
+    }
+    else if (bekerki == 2)
+    {
+        bekerauto();
+    }
+    else
+    {
+        Console.WriteLine("Nem jót adott meg");
+    }
+}
+
 
 
 void hozzaad()
@@ -218,9 +201,9 @@ void hozzaad()
         previlagehozza = "User";
     }
 
-    File.AppendAllText("bejelentkezes.txt", $"{felhasznalohozza}/{jelszohozza}/{previlagehozza}");
+    File.AppendAllText("bejelentkezes.txt", $"{felhasznalohozza}/{jelszohozza}/{previlagehozza}\n");
 }
-hozzaad();
+
 
 Console.WriteLine("Kérem jelentkezzen be");
 Console.Write("Felhasználónév: ");
@@ -234,22 +217,18 @@ byte muvelet = 1;
 
 if (File.Exists("bejelentkezes.txt"))
 {
+    string[] sorok = File.ReadAllLines("bejelentkezes.txt");
 
-    foreach (string sor in File.ReadLines("bejelentkezes.txt").Skip(1))
+    foreach (string sor in sorok.Skip(1))
     {
         string[] reszek = sor.Split("/");
-        Console.WriteLine(reszek[0]); // username 
-        Console.WriteLine(reszek[1]); // pw
-        Console.WriteLine(reszek[2]); // admin
         if (reszek[0] == username)
         {
             for (int i = 1; i <= 3; i++)
             {
                 if (reszek[1] == jelszo)
                 {
-                    Console.WriteLine("Üdvözöljük!");
                     bejelentkezett = true;
-                    break;
                 }
                 else
                 {
@@ -257,18 +236,18 @@ if (File.Exists("bejelentkezes.txt"))
                     Console.Write("kérem a jelszót újra: ");
                     jelszo = Console.ReadLine();
                 }
-                Console.WriteLine("ASD");
                 if (bejelentkezett == true)
                 {
+                    Console.WriteLine("Üdvözöljük!");
                     if (reszek[2] == "Admin")
                     {
                         while (muvelet != 0)
                         {
-                            Console.Write("Milyen műveletet csinál (1.beírás 2.egy meglévő felülírása 3.új felhasználó hozzáadása 0.kilép)");
+                            Console.Write("Milyen műveletet csinál (1.beírás 2.egy meglévő felülírása 3.új felhasználó hozzáadása 0.kilép): ");
                             muvelet = byte.Parse(Console.ReadLine());
                             if (muvelet == 1)
                             {
-                                //beker();
+                                beker();
                             }
                             if (muvelet == 2)
                             {
@@ -284,15 +263,16 @@ if (File.Exists("bejelentkezes.txt"))
                     {
                         while (muvelet != 0)
                         {
-                            Console.Write("Milyen műveletet csinál (1.beírás 0.kilép)");
+                            Console.Write("Milyen műveletet csinál (1.beírás 0.kilép): ");
                             muvelet = byte.Parse(Console.ReadLine());
-                        }
-                        if (muvelet == 1)
-                        {
-                            //beker();
+                            if (muvelet == 1)
+                            {
+                                beker();
+                            }
                         }
                     }
-
+                    Console.WriteLine("Viszont Látásra!");
+                    break;
                 }
             }
         }
