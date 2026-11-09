@@ -186,7 +186,7 @@ void keres()
     string valasz = "";
     while (valasz != "0")
     {
-        Console.Write("Mi alapján keres (1.személy neve 2.rendszám 3.típus 4.márka 0.vissza): ");
+        Console.Write("Mi alapján keres (1.személy neve | 2.igazolványszám | 3.rendszám | 4.típus | 5.márka | 0.vissza): ");
         valasz = Console.ReadLine();
 
         if (valasz == "1")
@@ -196,15 +196,20 @@ void keres()
         }
         else if (valasz == "2")
         {
+            Console.Write("Igazolványszám: ");
+            keresfajlban("../Fileok/emberadatok.txt", 5, Console.ReadLine(), emberek);
+        }
+        else if (valasz == "3")
+        {
             Console.Write("Rendszám: ");
             keresfajlban("../Fileok/autoadatok.txt", 3, Console.ReadLine(), autok);
         }
-        else if (valasz == "3")
+        else if (valasz == "4")
         {
             Console.Write("Típus: ");
             keresfajlban("../Fileok/autoadatok.txt", 2, Console.ReadLine(), autok);
         }
-        else if (valasz == "4")
+        else if (valasz == "5")
         {
             Console.Write("Márka: ");
             keresfajlban("../Fileok/autoadatok.txt", 1, Console.ReadLine(), autok);
@@ -220,7 +225,7 @@ void keres()
 
 void beker()
 {
-    Console.Write("Ember vagy Autó érkezett(1. ember 2.autó)? ");
+    Console.Write("Ember vagy Autó érkezett (1. ember | 2.autó)? ");
     byte bekerki = 0;
     while (bekerki != 1 && bekerki != 2)
     {
@@ -236,8 +241,8 @@ void beker()
         }
         else
         {
-            Console.WriteLine("Nem jót adott meg");
-            Console.Write("Ember vagy Autó érkezett(1. ember 2.autó)? ");
+            Console.WriteLine("Nem jót adott meg!");
+            Console.Write("Ember vagy Autó érkezett (1. ember | 2.autó)? ");
         }
     }
 }
@@ -246,6 +251,7 @@ void beker()
 
 void hozzaad()
 {
+    Console.WriteLine("-----------------");
     Console.Write("Mi legyen a felhasználónév: ");
     string felhasznalohozza = Console.ReadLine();
 
@@ -268,7 +274,7 @@ void hozzaad()
     }
 
 
-    Console.Write("Mi legyen a felhasználó jogköre (1.Admin 0.User): ");
+    Console.Write("Mi legyen a felhasználó jogköre (1.Admin | 0.User): ");
     byte previlage = byte.Parse(Console.ReadLine());
     if (previlage == 1)
     {
@@ -281,21 +287,18 @@ void hozzaad()
 
     File.AppendAllText("bejelentkezes.txt", $"{felhasznalohozza}/{jelszohozza}/{previlagehozza}\n");
     Console.WriteLine("---Sikeresen hozzáadva---");
+    Console.WriteLine("-----------------");
 }
 
 
-Console.WriteLine("Kérem jelentkezzen be");
+Console.WriteLine("Kérem jelentkezzen be!");
+Console.WriteLine("-----------------");
 Console.Write("Felhasználónév: ");
 string username = Console.ReadLine();
 
-Console.Write("Jelszó: ");
-string jelszo = Console.ReadLine();
-
-bool bejelentkezett = false;
-byte muvelet = 1;
-string[] talalt = null;
-
 string[] sorok = File.ReadAllLines("bejelentkezes.txt");
+
+string[] talalt = null;
 
 foreach (string sor in sorok.Skip(1))
 {
@@ -318,6 +321,11 @@ if (talalt == null)
 }
 else
 {
+    Console.Write("Jelszó: ");
+    string jelszo = Console.ReadLine();
+    Console.WriteLine("-----------------");
+    bool bejelentkezett = false;
+    byte muvelet = 1;
     for (int i = 1; i <= 3; i++)
     {
         if (talalt[1] == jelszo)
@@ -336,13 +344,13 @@ else
 
     if (bejelentkezett)
     {
-        Console.WriteLine("Üdvözöljük!");
+        Console.WriteLine("---Üdvözöljük!---");
 
         if (talalt[2] == "Admin")
         {
             while (muvelet != 0)
             {
-                Console.Write("Milyen műveletet csinál (1.beírás 2.egy meglévő keresése 3.új felhasználó hozzáadása 0.kilép): ");
+                Console.Write("Milyen műveletet csinál (1.beírás | 2.egy meglévő keresése | 3.új felhasználó hozzáadása | 0.kilép): ");
                 if (!byte.TryParse(Console.ReadLine(), out muvelet))
                 {
                     muvelet = 255;
@@ -370,7 +378,7 @@ else
         {
             while (muvelet != 0)
             {
-                Console.Write("Milyen műveletet csinál (1.beírás 2. egy meglévő keresése 0.kilép): ");
+                Console.Write("Milyen műveletet csinál (1.beírás | 2. egy meglévő keresése | 0.kilép): ");
                 if (!byte.TryParse(Console.ReadLine(), out muvelet))
                 {
                     muvelet = 255;
@@ -390,7 +398,7 @@ else
                 }
             }
         }
-
+        Console.WriteLine("-----------------");
         Console.WriteLine("Viszont Látásra!");
     }
 }
