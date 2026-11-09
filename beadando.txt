@@ -1,5 +1,0 @@
-1. Bejelentkezes lekerese egy txt filebol -> username, jelszo
-- ha nincs akkor exitel a programbol ha van akkor el kezdheti feltölteni a fileba.
-
-- a file amibe ment a nap neve, minden nap mas txt -> lessz rogton organize
--auto bekeres szin marka tipus rendszam
