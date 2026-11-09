@@ -5,13 +5,6 @@ string previlagehozza = "";
 
 
 Console.WriteLine("-----------------");
-Console.WriteLine("Jelentkezzen be (Felhasználónév, Jelszó)");
-Console.Write("kérem a felhasználónevet: ");
-string username = Console.ReadLine();
-
-Console.Write("kérem a jelszót: ");
-string jelszo = Console.ReadLine();
-
 
 if (File.Exists("bejelentkezes.txt"))
 {
