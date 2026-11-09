@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Data;
+using System.Runtime.CompilerServices;
 
 string previlagehozza = "";
 
@@ -243,7 +244,7 @@ if (File.Exists("bejelentkezes.txt"))
                     {
                         while (muvelet != 0)
                         {
-                            Console.Write("Milyen műveletet csinál (1.beírás 2.egy meglévő felülírása 3.új felhasználó hozzáadása 0.kilép): ");
+                            Console.Write("Milyen műveletet csinál (1.beírás 2.egy meglévő keresése 3.új felhasználó hozzáadása 0.kilép): ");
                             muvelet = byte.Parse(Console.ReadLine());
                             if (muvelet == 1)
                             {
@@ -251,7 +252,7 @@ if (File.Exists("bejelentkezes.txt"))
                             }
                             if (muvelet == 2)
                             {
-                                //modosit();
+                                //keres();
                             }
                             if (muvelet == 3)
                             {
@@ -263,11 +264,15 @@ if (File.Exists("bejelentkezes.txt"))
                     {
                         while (muvelet != 0)
                         {
-                            Console.Write("Milyen műveletet csinál (1.beírás 0.kilép): ");
+                            Console.Write("Milyen műveletet csinál (1.beírás 2. egy meglévő keresése 0.kilép): ");
                             muvelet = byte.Parse(Console.ReadLine());
                             if (muvelet == 1)
                             {
                                 beker();
+                            }
+                            if (muvelet == 2)
+                            {
+                                //keres();
                             }
                         }
                     }
