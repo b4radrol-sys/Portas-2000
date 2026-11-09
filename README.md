@@ -1,47 +1,56 @@
 # Portás Rendszer 2000 🚗👤
 
-Egy C# alapú  alkalmazás, ami autó, szeméy és fiók kezelésére szolgál. 🤯
+Egy egyszerű C# konzolos program portások számára.
 
 ---
 
-## Fő funkciók 🛠
+## Mit tud 🛠
 
-* **Felhasználókezelés:** 🐱‍👤
-  * Jelszóval védett bejelentkezési rendszer (3 próbával).
-  * Fiók erősség:
-    * **Admin:** Adatbeírás, adatmódosítás.
-    * **User:** Korlátozott adatbevitel.
-* **Autók adatainak kezelése:** 🏎
-  * Márka, típus, rendszám és szín bekérése.
-  * Automatikus ID generálás.
-  * Bemeneti adatok érvényesítése (típus- és karakterellenőrzés).
-  * Adatok mentése CSV szerkezetű fájlba (`autoadatok.txt`).
-* **Személyek adatinak kezelése:** 👲🏾
-  * Név, nem, kor, hajszín és igazolványszám mentése.
-  * Bemeneti adatok érvényesítése (típus- és karakterellenőrzés).
-  * Adatok mentése CSV szerkezetű fájlba (`emberadatok.txt`).
+**Bejelentkezés** 🐱‍👤
+- Felhasználónévvel és jelszóval lehet belépni. Rossz jelszónál 3 próbálkozás van.
+- Két jogkör létezik:
+  - **Admin:** adatot rögzíthet, és új felhasználót is felvehet. 
+  - **User:** csak adatot rögzíthet.
+- Az első indításkor a program létrehoz egy alapértelmezett admin fiókot (`sysadmin`). A jelszót az első belépés után érdemes lecserélni egy sajátra (új admin felvétele után).
+
+**Autó rögzítése** 🏎
+- Bekéri a márkát, típust, rendszámot és színt.
+- A márka és a szín nem tartalmazhat számot, és egyik mező sem lehet üres.
+- Felvitel idejét nyilván tartja.
+
+**Személy rögzítése** 👲🏾
+- Bekéri a nevet, nemet, kort, hajszínt (vagy hogy kopasz) és az igazolványszámot.
+- A név, nem és hajszín nem tartalmazhat számot, a kor nem tartalmazhat betűt, és egyik mező sem lehet üres.
+- Felvitel idejét nyilván tartja.
 
 ---
 
-## Adattárolási szerkezet 🍫
+## Menü
 
-Az alkalmazás az alábbi `.txt` fájlokban tárolja az adatokat:
+| Művelet | Admin | User |
+| :--- | :---: | :---: |
+| 1 – Beírás (autó vagy ember) | ✔ | ✔ |
+| 2 – Meglévő keresése | *(még nincs kész)* | *(még nincs kész)* |
+| 3 – Új felhasználó hozzáadása | ✔ | ✘ |
+| 0 – Kilépés | ✔ | ✔ |
 
-| Fájlnév | Formátum / Fejléc | Leírás |
+---
+
+## Hol tárolja az adatokat 🍫
+
+| Fájl | Szerkezet | Tartalom |
 | :--- | :--- | :--- |
-| `bejelentkezes.txt` | `Felhasználónév/Jelszó/Jogkör` | Felhasználói erősségek (`Admin` / `User`) |
-| `autoadatok.txt` | `ID, Márka, Tipus, Rendszám, Szín` | Rögzített gépjárművek adatai |
-| `emberadatok.txt` | `ID, Név, Neme, Kor, Hajszín, Igazolványszám` | Rögzített személyek adatai |
+| `bejelentkezes.txt` | `Felhasználónév/Jelszó/Jogkör` | Felhasználók (rejtett fájl, a program mellett) |
+| `../Fileok/autoadatok.txt` | `ID, Márka, Tipus, Rendszám, Szín` | Rögzített autók |
+| `../Fileok/emberadatok.txt` | `ID, Név, Neme, Kor, Hajszín, Igazolványszám` | Rögzített személyek |
+
+A `Fileok` mappának léteznie kell a program futtatási mappájához képest egy szinttel feljebb, a program a fájlokat csak létrehozza, a mappát nem.
 
 ---
 
-### Futtatáshoz szükségek 🔩
-* .NET SDK 6.0.
+## Futtatás 🏃🏾‍♂️
 
-### Futtatás 🏃🏾‍♂️
-1. Klónozd vagy töltsd le a projektet.
-2. Futtasd le a Program.cs file-t
-3. Indítsd el
-
-### Adminoknak utasítás 😘
-* Képes vagy módosítani, hozzáadni és szerkeszteni adatokat
+1. Töltsd le vagy klónozd a projektet.
+2. Hozd létre a `Fileok` mappát a fent leírt helyen.
+3. A projekt mappájában futtasd: `dotnet run`
+4. Jelentkezz be.
