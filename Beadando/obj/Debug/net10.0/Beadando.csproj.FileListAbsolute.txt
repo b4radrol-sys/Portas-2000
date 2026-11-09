@@ -1,0 +1,16 @@
+J:\2026_2027\Git\Projekt_1\Beadando\Beadando\bin\Debug\net10.0\Beadando.exe
+J:\2026_2027\Git\Projekt_1\Beadando\Beadando\bin\Debug\net10.0\Beadando.deps.json
+J:\2026_2027\Git\Projekt_1\Beadando\Beadando\bin\Debug\net10.0\Beadando.runtimeconfig.json
+J:\2026_2027\Git\Projekt_1\Beadando\Beadando\bin\Debug\net10.0\Beadando.dll
+J:\2026_2027\Git\Projekt_1\Beadando\Beadando\bin\Debug\net10.0\Beadando.pdb
+J:\2026_2027\Git\Projekt_1\Beadando\Beadando\obj\Debug\net10.0\Beadando.GeneratedMSBuildEditorConfig.editorconfig
+J:\2026_2027\Git\Projekt_1\Beadando\Beadando\obj\Debug\net10.0\Beadando.AssemblyInfoInputs.cache
+J:\2026_2027\Git\Projekt_1\Beadando\Beadando\obj\Debug\net10.0\Beadando.AssemblyInfo.cs
+J:\2026_2027\Git\Projekt_1\Beadando\Beadando\obj\Debug\net10.0\Beadando.csproj.CoreCompileInputs.cache
+J:\2026_2027\Git\Projekt_1\Beadando\Beadando\obj\Debug\net10.0\Beadando.sourcelink.json
+J:\2026_2027\Git\Projekt_1\Beadando\Beadando\obj\Debug\net10.0\Beadando.dll
+J:\2026_2027\Git\Projekt_1\Beadando\Beadando\obj\Debug\net10.0\refint\Beadando.dll
+J:\2026_2027\Git\Projekt_1\Beadando\Beadando\obj\Debug\net10.0\Beadando.pdb
+J:\2026_2027\Git\Projekt_1\Beadando\Beadando\obj\Debug\net10.0\Beadando.genruntimeconfig.cache
+J:\2026_2027\Git\Projekt_1\Beadando\Beadando\obj\Debug\net10.0\ref\Beadando.dll
+J:\2026_2027\Git\Projekt_1\Beadando\Beadando\obj\Debug\net10.0\Beadando.csproj.Up2Date
