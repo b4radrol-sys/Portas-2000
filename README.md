@@ -1,12 +1,12 @@
-# Autó és Ember kezelő Rendszer
+# Autó és Ember kezelő Rendszer 🚗👤
 
-Egy C# alapú  alkalmazás, ami autó, szeméy és fiók kezelésére szolgál.
+Egy C# alapú  alkalmazás, ami autó, szeméy és fiók kezelésére szolgál. 🤯
 
 ---
 
-## Fő funkciók
+## Fő funkciók 🛠
 
-* **Felhasználókezelés:**
+* **Felhasználókezelés:** 🐱‍👤
   * Jelszóval védett bejelentkezési rendszer (3 próbával).
   * Fiók erősség:
     * **Admin:** Adatbeírás, adatmódosítás.
@@ -23,7 +23,7 @@ Egy C# alapú  alkalmazás, ami autó, szeméy és fiók kezelésére szolgál.
 
 ---
 
-## Adattárolási szerkezet
+## Adattárolási szerkezet 🍫
 
 Az alkalmazás az alábbi `.txt` fájlokban tárolja az adatokat:
 
@@ -35,12 +35,13 @@ Az alkalmazás az alábbi `.txt` fájlokban tárolja az adatokat:
 
 ---
 
-## 🛠️ Előfeltételek és Futtatás
+### Futtatáshoz szükségek 🔩
+* .NET SDK 6.0.
 
-### Futtatáshoz szükségek
-* [.NET SDK 6.0] vagy újabb.
-
-### Futtatás
+### Futtatás 🏃🏾‍♂️
 1. Klónozd vagy töltsd le a projektet.
 2. Futtasd le a Program.cs file-t
 3. Indítsd el
+
+### Adminoknak utasítás 😘
+1. Képes vagy módosítani, hozzáadni és szerkeszteni adatokat
