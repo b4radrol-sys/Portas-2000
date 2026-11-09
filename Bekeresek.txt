@@ -1,48 +1,6 @@
-Console.WriteLine("-----------------");
-Console.WriteLine("Jelentkezzen be (Felhasználónév, Jelszó)");
-Console.Write("kérem a felhasználónevet: ");
-string username = Console.ReadLine();
+using System.Runtime.CompilerServices;
 
-Console.Write("kérem a jelszót: ");
-string jelszo = Console.ReadLine();
-
-
-if (File.Exists("bejelentkezes.txt"))
-{
-
-    foreach (string sor in File.ReadLines("bejelentkezes.txt").Skip(1))
-    {
-        string[] reszek = sor.Split("/");
-        Console.WriteLine(reszek[0]); // username 
-        Console.WriteLine(reszek[1]); // pw
-        Console.WriteLine(reszek[2]); // admin
-        if (reszek[0] == username)
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                int proba = 0;
-                if (reszek[1] == jelszo)
-                {
-                    Console.WriteLine("Üdvözöljük!");
-                    break;
-                }
-                else
-                {
-                    proba += 1;
-                    Console.WriteLine($"Helytelen jelszó, próbálja újra{3 - proba}próbálkozás maradt!");
-                    Console.Write("kérem a jelszót újra: ");
-                    jelszo = Console.ReadLine();
-                }
-            }
-        }
-    }
-}
-
-
-
-
-
-
+string previlagehozza = "";
 
 //----------------------------------------------------------------------------
 //Innen Roland jön
@@ -113,7 +71,7 @@ void bekerauto()
 
 
 
-    List<string> autolista = new() {sorszam + "," + marka + "," + tipus + "," + rendszam + "," + szin };
+    List<string> autolista = new() { sorszam + "," + marka + "," + tipus + "," + rendszam + "," + szin };
     File.AppendAllLines("autoadatok.txt", autolista);
     Console.WriteLine("---Sikeresen hozzáadva---");
     Console.WriteLine("-----------------");
@@ -187,14 +145,236 @@ void bekerember()
 
 
 
-    List<string> emberadatok = new() {sorszam + "," + nev + "," + nem + "," + kor + "," + hajszin + "," + igazolvanyszam };
+    List<string> emberadatok = new() { sorszam + "," + nev + "," + nem + "," + kor + "," + hajszin + "," + igazolvanyszam };
     File.AppendAllLines("emberadatok.txt", emberadatok);
     Console.WriteLine("---Sikeresen hozzáadva---");
     Console.WriteLine("-----------------");
 }
 
+void modosit()
+{
+    Console.Write("Mit akar szerkeszteni? (1: auto, 2: szemely): ");
+    int modositacsocska = int.Parse(Console.ReadLine());
 
-bekerauto();
-bekerember();
+    string utvonalocska = "";
+    if (modositacsocska == 1)
+    {
+        utvonalocska = "autoadatok.txt";
+    }
+    else if (modositacsocska == 2)
+    {
+        utvonalocska = "emberadatok.txt";
+    }
+    else
+    {
+        Console.WriteLine("Érvénytelen választás!");
+        return;
+    }
+
+    if (!File.Exists(utvonalocska))
+    {
+        Console.WriteLine("Fájl nem található!");
+        return;
+    }
+
+
+    string[] sorok = File.ReadAllLines(utvonalocska);
+
+
+    Console.WriteLine("\n--- Jelenlegi adatok ---");
+    foreach (string sor in sorok)
+    {
+        Console.WriteLine(sor);
+    }
+
+    Console.Write("\nAdja meg a módosítani kívánt ID-t: ");
+    string keresettId = Console.ReadLine();
+
+    bool talalt = false;
+
+
+    for (int i = 1; i < sorok.Length; i++)
+    {
+        string[] reszek = sorok[i].Split(',');
+
+
+        if (reszek[0].Trim() == keresettId)
+        {
+            talalt = true;
+            Console.WriteLine($"\nMódosítás erre a rekordra: {sorok[i]}");
+
+            if (modositacsocska == 1)
+            {
+                Console.Write("Új Márka: ");
+                string ujMarka = Console.ReadLine();
+
+                Console.Write("Új Típus: ");
+                string ujTipus = Console.ReadLine();
+
+                Console.Write("Új Rendszám: ");
+                string ujRendszam = Console.ReadLine();
+
+                Console.Write("Új Szín: ");
+                string ujSzin = Console.ReadLine();
+
+
+                sorok[i] = $"{keresettId},{ujMarka},{ujTipus},{ujRendszam},{ujSzin}";
+            }
+            else if (modositacsocska == 2)
+            {
+                Console.Write("Új Név: ");
+                string ujNev = Console.ReadLine();
+
+                Console.Write("Új Neme: ");
+                string ujNem = Console.ReadLine();
+
+                Console.Write("Új Kor: ");
+                string ujKor = Console.ReadLine();
+
+                Console.Write("Új Hajszín: ");
+                string ujHajszin = Console.ReadLine();
+
+                Console.Write("Új Igazolványszám: ");
+                string ujIgazolvany = Console.ReadLine();
+
+
+                sorok[i] = $"{keresettId},{ujNev},{ujNem},{ujKor},{ujHajszin},{ujIgazolvany}";
+            }
+
+            File.WriteAllLines(utvonalocska, sorok);
+            Console.WriteLine("--- Sikeresen módosítva! ---");
+            break;
+        }
+    }
+
+    if (!talalt)
+    {
+        Console.WriteLine("Nincs ilyen ID-jű rekord!");
+    }
+}
+
+
 //Vége a mesének
 //----------------------------------------------------------------------------
+
+void beker()
+    {
+        Console.Write("Ember vagy Autó érkezett(1. ember 2.autó)? ");
+        byte bekerki = 0;
+
+        while (bekerki != 1 || bekerki != 2)
+        {
+            bekerki = byte.Parse(Console.ReadLine());
+            if (bekerki == 1)
+            {
+                bekerember();
+            }
+            else if (bekerki == 2)
+            {
+                bekerauto();
+            }
+            else
+            {
+                Console.WriteLine("Kérem 1 vagy 2-t írjon be");
+            }
+        }
+    }
+
+
+    void hozzaad()
+    {
+        Console.Write("Mi legyen a felhasználónév: ");
+        string felhasznalohozza = Console.ReadLine();
+
+        Console.Write("Mi legyen a jelszo: ");
+        string jelszohozza = Console.ReadLine();
+
+        Console.Write("Mi legyen a felhasználó jogköre (1.Admin 0.User): ");
+        byte previlage = byte.Parse(Console.ReadLine());
+        if (previlage == 1)
+        {
+            previlagehozza = "Admin";
+        }
+        else
+        {
+            previlagehozza = "User";
+        }
+
+        File.AppendAllText("bejelentkezes.txt", $"{felhasznalohozza}/{jelszohozza}/{previlagehozza}\n");
+    }
+
+
+    Console.WriteLine("Kérem jelentkezzen be");
+    Console.Write("Felhasználónév: ");
+    string username = Console.ReadLine();
+
+    Console.Write("Jelszó: ");
+    string jelszo = Console.ReadLine();
+
+    bool bejelentkezett = false;
+    byte muvelet = 1;
+
+    if (File.Exists("bejelentkezes.txt"))
+    {
+        string[] sorok = File.ReadAllLines("bejelentkezes.txt");
+
+        foreach (string sor in sorok.Skip(1))
+        {
+            string[] reszek = sor.Split("/");
+            if (reszek[0] == username)
+            {
+                for (int i = 1; i <= 3; i++)
+                {
+                    if (reszek[1] == jelszo)
+                    {
+                        bejelentkezett = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Helytelen jelszó, próbálja újra, {3 - i} próbálkozás van hátra!");
+                        Console.Write("kérem a jelszót újra: ");
+                        jelszo = Console.ReadLine();
+                    }
+                    Console.WriteLine("ASD");
+                    if (bejelentkezett == true)
+                    {
+                        Console.WriteLine("Üdvözöljük!");
+                        if (reszek[2] == "Admin")
+                        {
+                            while (muvelet != 0)
+                            {
+                                Console.Write("Milyen műveletet csinál (1.beírás 2.egy meglévő felülírása 3.új felhasználó hozzáadása 0.kilép): ");
+                                muvelet = byte.Parse(Console.ReadLine());
+                                if (muvelet == 1)
+                                {
+                                    beker();
+                                }
+                                if (muvelet == 2)
+                                {
+                                    modosit();
+                                }
+                                if (muvelet == 3)
+                                {
+                                    hozzaad();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            while (muvelet != 0)
+                            {
+                                Console.Write("Milyen műveletet csinál (1.beírás 0.kilép): ");
+                                muvelet = byte.Parse(Console.ReadLine());
+                                if (muvelet == 1)
+                                {
+                                    beker();
+                                }
+                            }
+                        }
+                        Console.WriteLine("Viszont Látásra!");
+                        break;
+                    }
+                }
+            }
+        }
+    }
