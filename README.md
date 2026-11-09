@@ -1,4 +1,4 @@
-# Autó és Ember kezelő Rendszer 🚗👤
+# Portás Rendszer 2000 🚗👤
 
 Egy C# alapú  alkalmazás, ami autó, szeméy és fiók kezelésére szolgál. 🤯
 
