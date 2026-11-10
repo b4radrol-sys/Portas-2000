@@ -30,7 +30,7 @@ Egy egyszerű C# konzolos program portások számára.
 | Művelet | Admin | User |
 | :--- | :---: | :---: |
 | 1 – Beírás (autó vagy ember) | ✔ | ✔ |
-| 2 – Meglévő keresése | *(még nincs kész)* | *(még nincs kész)* |
+| 2 – Meglévő keresése | ✔ | ✔ |
 | 3 – Új felhasználó hozzáadása | ✔ | ✘ |
 | 0 – Kilépés | ✔ | ✔ |
 
